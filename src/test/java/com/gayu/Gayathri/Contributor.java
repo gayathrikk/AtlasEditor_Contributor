@@ -42,7 +42,7 @@ public class Contributor {
 		System.out.println("The server is Opened sucessfully");
 		WebDriverWait wait = new WebDriverWait(driver, 50);
 		WebElement viewerSectionLink = wait
-				.until(ExpectedConditions.elementToBeClickable(By.xpath("//a[contains(@class, 'ng-tns-c93-3')]")));
+				.until(ExpectedConditions.elementToBeClickable(By.xpath("//a[@title='Viewer']")));
 		viewerSectionLink.click();
 		System.out.println("--------------------------*****************-----------------------");
 		System.out.println("The Viewer Icon is clicked");
