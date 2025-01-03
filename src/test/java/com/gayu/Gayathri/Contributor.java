@@ -130,7 +130,7 @@ public class Contributor {
 		try {
 			WebDriverWait wait = new WebDriverWait(driver, 50);
 			Actions actions = new Actions(driver);
-			actions.keyDown(Keys.SHIFT).sendKeys(Keys.chord(Keys.SHIFT, "m")).keyUp(Keys.SHIFT).build().perform();
+			actions.keyDown(Keys.SHIFT).sendKeys("m").keyUp(Keys.SHIFT).build().perform();
 			System.out.println("--------------------------*****************-----------------------");
 			System.out.println("Action executed successfully!");
 
