@@ -163,6 +163,15 @@ public class Contributor {
 				System.out.println("--------------------------*****************-----------------------");
 				System.out.println("The software Team contributor is  not selected");
 			}
+			try {
+            WebDriverWait wait = new WebDriverWait(driver, 30);
+            WebElement pen = wait.until(ExpectedConditions.elementToBeClickable(By.xpath("//img[@src='/viewer/assets/images/colorsvg/paintbrush.svg']")));
+            pen.click();
+            Thread.sleep(5000);
+            System.out.println("The draw button clicked Successfully");
+        } catch (Exception e) {
+            System.err.println("The draw button is not clicked: " + e.getMessage());
+        }
 		
 		try { 
 		    WebElement canvas = driver.findElement(By.xpath("//canvas"));
