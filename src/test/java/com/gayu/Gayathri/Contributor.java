@@ -30,7 +30,7 @@ public class Contributor {
 	@BeforeTest
 	public void setup() throws MalformedURLException {
 		DesiredCapabilities dc = DesiredCapabilities.chrome();
-		URL url = new URL("http://172.20.23.92:4444/wd/hub");
+		URL url = new URL("http://172.20.23.92:4443/wd/hub");
 		driver = new RemoteWebDriver(url, dc);
 	}
 
@@ -145,10 +145,10 @@ public class Contributor {
 			contri.click();
 			Thread.sleep(3000);
 			System.out.println("--------------------------*****************-----------------------");
-			System.out.println("Our contributor selected Successfully");
+			System.out.println("contributor selected Successfully");
 		} catch (Exception e) {
 			System.out.println("--------------------------*****************-----------------------");
-			System.out.println("Our Contributor   is not selected");
+			System.out.println("Contributor   is not selected");
 		}}
 		@Test(priority = 4)
 		public void select_contributor() {
@@ -163,66 +163,216 @@ public class Contributor {
 				System.out.println("--------------------------*****************-----------------------");
 				System.out.println("The software Team contributor is  not selected");
 			}
+			
 			try {
-            WebDriverWait wait = new WebDriverWait(driver, 30);
-            WebElement pen = wait.until(ExpectedConditions.elementToBeClickable(By.xpath("//img[@src='/viewer/assets/images/colorsvg/paintbrush.svg']")));
-            pen.click();
-            Thread.sleep(5000);
-            System.out.println("The draw button clicked Successfully");
-        } catch (Exception e) {
-            System.err.println("The draw button is not clicked: " + e.getMessage());
-        }
+	            WebDriverWait wait = new WebDriverWait(driver, 30);
+	            WebElement pen = wait.until(ExpectedConditions.elementToBeClickable(By.xpath("//img[@src='/viewer/assets/images/colorsvg/paintbrush.svg']")));
+	            pen.click();
+	            Thread.sleep(5000);
+	            System.out.println("The draw button clicked Successfully");
+	        } catch (Exception e) {
+	            System.err.println("The draw button is not clicked: " + e.getMessage());
+	        }
 		
-		try { 
-			  WebDriverWait wait = new WebDriverWait(driver, 30);
-		    WebElement canvas = driver.findElement(By.xpath("//canvas"));
-		    Actions actions = new Actions(driver);
-		   
-		 	Thread.sleep(3000);
-			int centerX = 0;
-			int centerY = 0;
-			actions.moveToElement(canvas, centerX, centerY).click().perform();
-			Thread.sleep(5000);
-		   System.out.println("Clicked at the center of the square successfully");
-		} catch (NoSuchElementException e1) {
-		    System.out.println("Element not found: " + e1.getMessage());
-		} catch (Exception e) {
-		    System.out.println("Error executing action: " + e.getMessage());
-		}
-		try {
-		    WebDriverWait wait = new WebDriverWait(driver, 50);
-		    WebElement regionName = wait.until(ExpectedConditions.elementToBeClickable(By.xpath("//span[text()=' 10154 : neural tube-NT ']")));
-
-		    // Get the text without trimming
-		    String actualText = regionName.getText();
-		    System.out.println("Text=" + actualText);
-
-		    // Define the expected text with leading and trailing spaces
-		    String expectedTextWithSpaces = "10154 : neural tube-NT";
-
-		    // Print the expected text with spaces
-		    System.out.println("Expected text with spaces: [" + expectedTextWithSpaces + "]");
-
-		    // Assert that the expected text matches the actual text without trimming
-		    assertTrue("The expected text does not match the actual text.", actualText.equals(expectedTextWithSpaces));
-
-		    // Print a message if assertion passes
-		    System.out.println("--------------------------*****************-----------------------");
-		    System.out.println("Assertion passed: The retrieved text matches the expected text.");
-		    System.out.println("The shortcut keys go to direct Draw page successfully.");
-		} catch (AssertionError e) {
-		    System.out.println("Assertion failed: " + e.getMessage());
-		} catch (Exception e) {
-		    System.out.println("An error occurred: " + e.getMessage());
-		}
-
-
-
-	}
-		@AfterTest
-		public void tearDown() {
-			if (driver != null) {
-				driver.quit();
+			try {
+				WebDriverWait wait = new WebDriverWait(driver, 30);
+				WebElement unlock = wait.until(ExpectedConditions.elementToBeClickable(By.xpath("//button[text()='Unlock']")));
+				unlock.click();
+				System.out.println("--------------------------*****************-----------------------");
+				System.out.println("The Unlock button is clicked");
+			} catch (Exception e) {
+				System.out.println("--------------------------*****************-----------------------");
+				System.out.println("The Unlock button is not clicked");
 			}
-		}
+
+	try {
+		WebDriverWait wait = new WebDriverWait(driver, 50);
+
+		// Click on the annotation icon
+		WebElement annotation = wait.until(ExpectedConditions
+				.visibilityOfElementLocated(By.xpath("//nb-accordion-item-header[text()='Annotation']")));
+		annotation.click();
+
+		System.out.println("--------------------------*****************-----------------------");
+		System.out.println("The annotation icon is clicked");
+
+	} catch (Exception e) {
+		System.out.println("The annotation icon is not clicked");
 	}
+
+	try {
+		Actions actions = new Actions(driver);
+
+		// Press ALT + V
+		actions.keyDown(Keys.ALT).sendKeys("v").keyUp(Keys.ALT).build().perform();
+		System.out.println("--------------------------*****************-----------------------");
+		System.out.println("Action executed successfully!");
+
+	} catch (NoSuchElementException e) {
+		System.out.println("Element not found: " + e.getMessage());
+	} catch (Exception e) {
+		System.out.println("Error executing action: " + e.getMessage());
+	}
+	try {
+		WebDriverWait wait = new WebDriverWait(driver, 50);
+		WebElement search = wait
+				.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//input[@placeholder='Search']")));
+		search.sendKeys("brain");
+		Thread.sleep(3000);
+		System.out.println("--------------------------*****************-----------------------");
+		System.out.println("The search icon is clicked");
+	} catch (Exception e) {
+		System.out.println("The search icon is not clicked");
+	}
+}
+
+@Test(priority = 5)
+public void search() {
+	try {
+		WebDriverWait wait = new WebDriverWait(driver, 50);
+		WebElement brainId = wait
+				.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//a[@id='1_anchor']")));
+		brainId.click();
+		Thread.sleep(3000);
+		System.out.println("--------------------------*****************-----------------------");
+		System.out.println("The option is selected");
+	} catch (Exception e) {
+		System.out.println("The option is not clicked");
+	}
+	try {
+		WebDriverWait wait = new WebDriverWait(driver, 50);
+		WebElement canvas = wait.until(ExpectedConditions
+				.visibilityOfElementLocated(By.xpath("//*[@id=\"atlasEditorMap\"]/div[1]/div[1]/div[2]")));
+		canvas.click();
+		Thread.sleep(3000);
+		System.out.println("--------------------------*****************-----------------------");
+		System.out.println("The canvas is clicked");
+	} catch (Exception e) {
+		System.out.println("The canvas is not clicked");
+	}
+}
+
+@Test(priority = 6)
+public void drawSquareInMiddle() throws InterruptedException {
+	try {
+		Actions actions = new Actions(driver);
+
+		actions.sendKeys("a").perform();
+		Thread.sleep(3000);
+		System.out.println("--------------------------*****************-----------------------");
+		System.out.println("Action executed successfully!");
+
+	} catch (NoSuchElementException e1) {
+		System.out.println("Element not found: " + e1.getMessage());
+	} catch (Exception e) {
+		System.out.println("Error executing action: " + e.getMessage());
+	}
+
+	WebElement canvas = driver.findElement(By.xpath("//canvas"));
+	Actions actions = new Actions(driver);
+	actions.moveToElement(canvas).click().moveByOffset(200, 0).click().moveByOffset(0, 200).click()
+			.moveByOffset(-200, 0).click().moveByOffset(0, -200).click().release().perform();
+	// Wait for visualization (optional)
+	Thread.sleep(5000);
+	System.out.println("Square drawn successfully in the middle of the canvas");
+	try {
+		Actions actions1 = new Actions(driver);
+
+		actions1.keyDown(Keys.SHIFT).sendKeys("S").keyUp(Keys.SHIFT).build().perform();
+		Thread.sleep(5000);
+		System.out.println("--------------------------*****************-----------------------");
+		System.out.println("Save action executed successfully!");
+
+	} catch (NoSuchElementException e1) {
+		System.out.println("Element not found: " + e1.getMessage());
+	} catch (Exception e) {
+		System.out.println("Error executing action: " + e.getMessage());
+	}
+}
+
+@Test(priority = 7)
+public void selectRegion() {
+	try {
+		Actions actions = new Actions(driver);
+
+		// Perform the action to trigger the selection (e.g., sending "x")
+		actions.sendKeys("x").perform();
+		Thread.sleep(3000);
+		System.out.println("--------------------------*****************-----------------------");
+		System.out.println("Select Action executed successfully!");
+
+		// Locate the canvas element
+
+		WebElement canvas = driver.findElement(By.xpath("//canvas"));
+		Thread.sleep(3000);
+		Actions actions1 = new Actions(driver);
+		int centerX = 0;
+		int centerY = 0;
+
+		actions.moveToElement(canvas, centerX, centerY).click().perform();
+		// Wait for visualization (optional)
+		Thread.sleep(5000);
+		System.out.println("--------------------------*****************-----------------------");
+		System.out.println("Square drawn successfully in the middle of the canvas");
+
+	} catch (Exception e) {
+		System.out.println("Error drawing square: " + e.getMessage());
+	}
+}
+
+@Test(priority = 8)
+public void DeleteRegion() {
+	try {
+		Actions actions = new Actions(driver);
+
+		// Perform the action to trigger the deletion (e.g., sending "d")
+		actions.sendKeys("d").perform();
+		Thread.sleep(3000);
+		System.out.println("--------------------------*****************-----------------------");
+		System.out.println("Deletion action executed successfully!");
+
+		// Additional actions or verification can be added here if needed
+
+	} catch (NoSuchElementException e1) {
+		System.out.println("Element not found: " + e1.getMessage());
+	} catch (Exception e) {
+		System.out.println("Error executing deletion action: " + e.getMessage());
+	}
+
+	try {
+		WebDriverWait wait = new WebDriverWait(driver, 50);
+		WebElement del = wait
+				.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//button[text()='Delete']")));
+		del.click();
+		Thread.sleep(3000);
+		System.out.println("--------------------------*****************-----------------------");
+		System.out.println("The Delete Button is clicked");
+	} catch (Exception e) {
+		System.out.println("The Delete Button is not clicked");
+	}
+}
+
+@Test(priority = 9)
+public void Save_Del_region() {
+	try {
+		Actions actions1 = new Actions(driver);
+
+		actions1.keyDown(Keys.SHIFT).sendKeys("S").keyUp(Keys.SHIFT).build().perform();
+		Thread.sleep(5000);
+		System.out.println("--------------------------*****************-----------------------");
+		System.out.println("Save action executed successfully!");
+		System.out.println("--------------------------*****************-----------------------");
+	} catch (NoSuchElementException e1) {
+		System.out.println("Element not found: " + e1.getMessage());
+	} catch (Exception e) {
+		System.out.println("Error executing action: " + e.getMessage());
+	}
+}
+
+@AfterTest
+public void tearDown() {
+	if (driver != null) {
+		driver.quit();
+	}
+}
+}
