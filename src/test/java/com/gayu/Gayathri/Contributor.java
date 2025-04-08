@@ -174,6 +174,7 @@ public class Contributor {
         }
 		
 		try { 
+			  WebDriverWait wait = new WebDriverWait(driver, 30);
 		    WebElement canvas = driver.findElement(By.xpath("//canvas"));
 		    Actions actions = new Actions(driver);
 		   
