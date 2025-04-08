@@ -94,8 +94,8 @@ public class Contributor {
 	public void table() throws InterruptedException {
 		String parentWindow = driver.getWindowHandle();
 		try {
-			WebDriverWait wait6 = new WebDriverWait(driver, 30);
-			WebElement table1 = wait6
+			WebDriverWait wait = new WebDriverWait(driver, 30);
+			WebElement table1 = wait
 					.until(ExpectedConditions.elementToBeClickable(By.xpath("//input[@placeholder='Search tags']")));
 			table1.sendKeys("TestM\n");
 			Thread.sleep(3000);
@@ -140,8 +140,8 @@ public class Contributor {
 			System.out.println("Error executing action: " + e.getMessage());
 		}
 		try {
-			WebDriverWait wait6 = new WebDriverWait(driver, 30);
-			WebElement contri = wait6.until(ExpectedConditions.elementToBeClickable(By.xpath("//nb-accordion-item-header[text()='Contributors']")));
+			WebDriverWait wait = new WebDriverWait(driver, 30);
+			WebElement contri = wait.until(ExpectedConditions.elementToBeClickable(By.xpath("//nb-accordion-item-header[text()='Contributors']")));
 			contri.click();
 			Thread.sleep(3000);
 			System.out.println("--------------------------*****************-----------------------");
@@ -153,8 +153,8 @@ public class Contributor {
 		@Test(priority = 4)
 		public void select_contributor() {
 			try {
-				WebDriverWait wait6 = new WebDriverWait(driver, 30);
-				WebElement radio = wait6.until(ExpectedConditions.elementToBeClickable(By.xpath("(//input[@type='radio'])[4]")));
+				WebDriverWait wait = new WebDriverWait(driver, 30);
+				WebElement radio = wait.until(ExpectedConditions.elementToBeClickable(By.xpath("(//input[@type='radio'])[4]")));
 				radio.click();
 				Thread.sleep(3000);
 				System.out.println("--------------------------*****************-----------------------");
