@@ -154,7 +154,7 @@ public class Contributor {
 		public void select_contributor() {
 			try {
 				WebDriverWait wait = new WebDriverWait(driver, 30);
-				WebElement radio = wait.until(ExpectedConditions.elementToBeClickable(By.xpath("(//input[@type='radio'])[2]")));
+				WebElement radio = wait.until(ExpectedConditions.elementToBeClickable(By.xpath("(//input[@type='radio'])[3]")));
 				radio.click();
 				Thread.sleep(3000);
 				System.out.println("--------------------------*****************-----------------------");
