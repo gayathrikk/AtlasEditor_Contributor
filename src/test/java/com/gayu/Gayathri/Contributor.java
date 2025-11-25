@@ -41,26 +41,21 @@ public class Contributor {
 		System.out.println("--------------------------*****************-----------------------");
 		System.out.println("The server is Opened sucessfully");
 		WebDriverWait wait = new WebDriverWait(driver, 50);
-		// WebElement viewerSectionLink = wait
-		// 		.until(ExpectedConditions.elementToBeClickable(By.xpath("//a[@title='Viewer']")));
-		// viewerSectionLink.click();
-		// System.out.println("--------------------------*****************-----------------------");
-		// System.out.println("The Viewer Icon is clicked");
-		String parentWindow = driver.getWindowHandle();
+		//String parentWindow = driver.getWindowHandle();
 		WebDriverWait wait1 = new WebDriverWait(driver, 20);
 		WebElement login = wait1
-				.until(ExpectedConditions.elementToBeClickable(By.xpath("//button[text()=' Log In ']")));
+				.until(ExpectedConditions.elementToBeClickable(By.xpath("//button[@class='auth-button']")));
 		login.click();
 		System.out.println("--------------------------*****************-----------------------");
 		System.out.println("The login Button is clicked");
 		Thread.sleep(4000);
-		Set<String> allWindows = driver.getWindowHandles();
-		for (String window : allWindows) {
-			if (!window.equals(parentWindow)) {
-				driver.switchTo().window(window);
-				break;
-			}
-		}
+		// Set<String> allWindows = driver.getWindowHandles();
+		// for (String window : allWindows) {
+		// 	if (!window.equals(parentWindow)) {
+		// 		driver.switchTo().window(window);
+		// 		break;
+		// 	}
+		// }
 		Thread.sleep(4000);
 		WebDriverWait wait2 = new WebDriverWait(driver, 20);
 		WebElement emailInput = wait2
@@ -86,13 +81,13 @@ public class Contributor {
 		System.out.println("--------------------------*****************-----------------------");
 		System.out.println("The Next Button is clicked");
 		Thread.sleep(5000);
-		driver.switchTo().window(parentWindow);
+		//driver.switchTo().window(parentWindow);
 		Thread.sleep(5000);
 	}
 
 	@Test(priority = 2)
 	public void table() throws InterruptedException {
-		String parentWindow = driver.getWindowHandle();
+		//String parentWindow = driver.getWindowHandle();
 		try {
 			WebDriverWait wait = new WebDriverWait(driver, 30);
 			WebElement table1 = wait
@@ -116,13 +111,13 @@ public class Contributor {
 			System.out.println("The Atlas Editor is not clicked");
 		}
 		Thread.sleep(4000);
-		Set<String> allWindows = driver.getWindowHandles();
-		for (String window : allWindows) {
-			if (!window.equals(parentWindow)) {
-				driver.switchTo().window(window);
-				break;
-			}
-		}
+		// Set<String> allWindows = driver.getWindowHandles();
+		// for (String window : allWindows) {
+		// 	if (!window.equals(parentWindow)) {
+		// 		driver.switchTo().window(window);
+		// 		break;
+		// 	}
+		// }
 	}
 
 	@Test(priority = 3)
