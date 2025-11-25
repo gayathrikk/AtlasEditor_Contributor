@@ -80,6 +80,9 @@ public class Contributor {
 		Next2.click();
 		System.out.println("--------------------------*****************-----------------------");
 		System.out.println("The Next Button is clicked");
+		WebDriverWait wait6 = new WebDriverWait(driver, 20);
+		WebElement continuebutton = wait6.until(ExpectedConditions.elementToBeClickable(By.xpath("//span[text()='Continue']")));
+		continuebutton.click();
 		Thread.sleep(5000);
 		//driver.switchTo().window(parentWindow);
 		Thread.sleep(5000);
